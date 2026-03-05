@@ -1,1 +1,35 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Weather Forecast App</title>\n    <!-- Leaflet CSS -->\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet/dist/leaflet.css\">\n    <script src=\"https://unpkg.com/leaflet/dist/leaflet.js\"></script>\n    <style>\n        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }\n        header { padding: 10px; background: #f8f9fa; }\n        #map { height: 500px; }\n        .container { display: flex; }\n        .side-panel { width: 300px; padding: 10px; }\n        .weather-panel { padding: 10px; background: #dfe6e9; }\n    </style>\n</head>\n<body>\n    <header>\n        <input type=\"text\" id=\"citySearch\" placeholder=\"Enter city name\"/>\n        <button id=\"searchBtn\">Search</button>\n        <button id=\"radarToggle\">Toggle Radar</button>\n    </header>\n    <div class=\"container\">\n        <div class=\"side-panel\">\n            <h2>Camera Details</h2>\n            <!-- Camera details will go here -->\n        </div>\n        <div id=\"map\"></div>\n    </div>\n    <div class=\"weather-panel\">\n        <h2>Weather Forecast</h2>\n        <!-- Weather data will be displayed here -->\n    </div>\n    <script>\n        // JavaScript for handling search, radar toggle, and Leaflet initialization will go here\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <input type="text" id="citySearch" placeholder="Search for a city...">
+            <button id="radarToggle">Toggle Radar</button>
+        </div>
+    </header>
+    <main>
+        <div id="mapContainer">
+            <!-- Map will be loaded here -->
+        </div>
+        <aside id="sidePanel">
+            <h2>Camera Details</h2>
+            <p id="cameraInfo">Details about the camera...</p>
+        </aside>
+    </main>
+    <footer>
+        <div id="weatherForecast">
+            <h2>Weather Forecast</h2>
+            <div id="forecastDetails">
+                <!-- Weather forecast details will be populated here -->
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
