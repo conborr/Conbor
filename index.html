@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iowa Weather Radar and Traffic Camera</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        #map { height: 100vh; }
+        #side-panel { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div id="side-panel">
+        <h2>Iowa Weather and Traffic</h2>
+        <p>Information and live updates from the Iowa weather radar and traffic cameras.</p>
+    </div>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([42.0347, -93.6200], 7); // Iowa coordinates
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Function to add radar and camera data on the map would go here
+        // ...
+    </script>
+</body>
+</html>
