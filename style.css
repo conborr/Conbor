@@ -1,30 +1,296 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+/* Iowa Weather Radar and Traffic Cameras - Styles */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.map {
-  flex: 1 1 70%;
-  height: 100vh;
-  background: #e0e0e0;
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
 }
 
-.side-panel {
-  flex: 0 0 25%;
-  background: #f8f8f8;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-  .container {
+body {
+    display: flex;
     flex-direction: column;
-  }
-  .map {
-    height: 50vh;
-  }
-  .side-panel {
-    flex: 1 1 auto;
-  }
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 12px;
+    opacity: 0.9;
+    margin: 5px 0 0 0;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Map container - takes up most of the screen */
+.map {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    background: #e8e8e8;
+}
+
+/* Side panel for camera details */
+.side-panel {
+    position: fixed;
+    right: 0;
+    top: 70px;
+    width: 350px;
+    max-height: calc(100vh - 70px);
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    border-left: 3px solid #667eea;
+}
+
+.side-panel.active {
+    transform: translateX(0);
+}
+
+#side-panel-content {
+    padding: 20px;
+}
+
+#side-panel-content h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+#side-panel-content p {
+    color: #666;
+    font-size: 13px;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+#side-panel-content strong {
+    color: #333;
+}
+
+#camera-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 15px 0;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    max-height: 300px;
+}
+
+#video-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+#video-link:hover {
+    background-color: #764ba2;
+}
+
+#video-link.hidden {
+    display: none;
+}
+
+/* Close button for side panel */
+.panel-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.panel-close-btn:hover {
+    color: #333;
+}
+
+/* Map controls styling */
+.leaflet-control-container .leaflet-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    color: #667eea !important;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+    background-color: #f0f0f0 !important;
+}
+
+/* Custom marker styling */
+.custom-marker {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Marker cluster styling */
+.marker-cluster {
+    background-color: #667eea;
+    color: white;
+    border: 3px solid #764ba2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.marker-cluster:hover {
+    background-color: #764ba2;
+    border-color: #667eea;
+}
+
+.marker-cluster span {
+    line-height: 30px;
+}
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    background-color: #fff;
+}
+
+.leaflet-popup-content {
+    font-size: 13px;
+    color: #333;
+}
+
+/* Status messages */
+.status-message {
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.status-message.info {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-left: 3px solid #1976d2;
+}
+
+.status-message.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 3px solid #c62828;
+}
+
+.status-message.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 3px solid #2e7d32;
+}
+
+/* No image placeholder */
+.no-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #999;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+/* Scrollbar styling for side panel */
+.side-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.side-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.side-panel::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.side-panel::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    .side-panel {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        width: 100%;
+        max-height: 50vh;
+        transform: translateY(100%);
+        border-left: none;
+        border-top: 3px solid #667eea;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .side-panel.active {
+        transform: translateY(0);
+    }
+
+    #side-panel-content {
+        max-height: calc(50vh - 40px);
+        overflow-y: auto;
+    }
 }
