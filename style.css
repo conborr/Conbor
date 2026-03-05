@@ -1,76 +1,76 @@
-.header {
-    background: linear-gradient(to right, #4A90E2, #9013FE);
-    padding: 20px;
-    color: #ffffff;
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
 }
 
-.search-box {
+.search-container {
     position: relative;
 }
 
-.search-box input {
-    width: 100%;
+.search-container input {
+    width: 300px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ced4da;
     border-radius: 4px;
-}
-
-.dropdown-results {
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    z-index: 10;
 }
 
 .radar-toggle {
-    display: inline-block;
-    padding: 10px;
-    cursor: pointer;
-    background-color: #4A90E2;
-    color: #fff;
+    background: #007bff;
+    color: white;
     border: none;
     border-radius: 4px;
-}
-
-.side-panel {
-    width: 300px;
-    padding: 15px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-}
-
-.weather-forecast {
     padding: 10px;
-    background: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.forecast-item {
-    border-bottom: 1px solid #ddd;
-    padding: 5px 0;
+.radar-toggle:hover {
+    background: #0056b3;
 }
 
-.marker-cluster {
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #4A90E2;
-    border-radius: 50%;
-    text-align: center;
+.weather-panel {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.side-panels {
+    width: 250px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 15px;
 }
 
 @media (max-width: 768px) {
-    .header, .side-panel, .weather-forecast {
-        padding: 10px;
+    .header-controls {
+        flex-direction: column;
+    }
+    .search-container input {
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    .header {
-        font-size: 1.5em;
+    .header-controls {
+        align-items: flex-start;
     }
-    .search-box input {
-        font-size: 1em;
-    }
-    .side-panel {
+    .side-panels {
         width: 100%;
     }
+}
+
+.marker-cluster {
+    background-color: #28a745;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+* {
+    transition: all 0.3s ease;
 }
