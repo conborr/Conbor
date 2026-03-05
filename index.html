@@ -3,33 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Weather Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Iowa Weather Radar & Traffic Cameras</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <div class="header-controls">
-            <input type="text" id="citySearch" placeholder="Search for a city...">
-            <button id="radarToggle">Toggle Radar</button>
-        </div>
-    </header>
-    <main>
-        <div id="mapContainer">
-            <!-- Map will be loaded here -->
-        </div>
-        <aside id="sidePanel">
-            <h2>Camera Details</h2>
-            <p id="cameraInfo">Details about the camera...</p>
-        </aside>
-    </main>
-    <footer>
-        <div id="weatherForecast">
-            <h2>Weather Forecast</h2>
-            <div id="forecastDetails">
-                <!-- Weather forecast details will be populated here -->
+        <div class="header-content">
+            <h1>🌦️ Iowa Weather Radar & Traffic Cameras</h1>
+            <div class="header-controls">
+                <div class="search-container">
+                    <input type="text" id="citySearch" placeholder="Search Iowa cities..." />
+                    <button id="searchBtn" class="btn-primary">Search</button>
+                </div>
+                <button id="radarToggle" class="radar-toggle active">📡 Radar: ON</button>
             </div>
         </div>
+    </header>
+    
+    <div class="main-container">
+        <div id="map" class="map-container"></div>
+        
+        <div class="side-panel" id="sidePanel">
+            <div class="panel-header">
+                <h2>📹 Camera Details</h2>
+                <button class="close-btn" id="closePanel">×</button>
+            </div>
+            <div id="cameraDetails" class="panel-content">
+                <p>Click a camera marker to view details</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="weather-panel" id="weatherPanel">
+        <div class="panel-header">
+            <h3>🌡️ Weather Forecast</h3>
+        </div>
+        <div id="weatherDetails" class="panel-content">
+            <p>Click on the map to get forecast for that location</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Iowa Weather & Traffic App | Data from NWS, RainViewer, and Iowa DOT</p>
     </footer>
-    <script src="script.js"></script>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
