@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conbor</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header, footer { background-color: #f8f9fa; padding: 10px; text-align: center; }
-        .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px; }
-        #search-box { margin-bottom: 20px; }
-        #radar-toggle { margin-bottom: 20px; }
-    </style>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Conbor</h1>
-        <div id="search-box">
-            <input type="text" placeholder="Search..." />
-            <button>Search</button>
-        </div>
-        <div id="radar-toggle">
-            <label>
-                <input type="checkbox" /> Toggle Radar
-            </label>
-        </div>
+        <h1>Weather App</h1>
+        <input type="text" id="search-box" placeholder="Enter city name..."></input>
+        <button id="search-button">Search</button>
     </header>
-    <div class="container">
-        <p>Your Conbor content goes here...</p>
-        <!-- Add other relevant sections here -->
-    </div>
+    <main>
+        <section id="weather-forecast">
+            <h2>Weather Forecast</h2>
+            <div id="forecast-panel">
+                <!-- Weather data will be displayed here -->
+            </div>
+        </section>
+        <section>
+            <label for="radar-toggle">Show Radar:</label>
+            <input type="checkbox" id="radar-toggle">
+        </section>
+    </main>
     <footer>
-        <p>&copy; 2026 Conbor. All rights reserved.</p>
+        <p>© 2026 Weather App</p>
     </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
