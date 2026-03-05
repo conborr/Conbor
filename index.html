@@ -3,33 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iowa Weather Radar and Traffic Camera</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        #map { height: 100vh; }
-        #side-panel { position: absolute; top: 10px; left: 10px; background: white; padding: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
-    </style>
+    <meta name="description" content="Real-time weather radar and traffic cameras for Iowa">
+    <title>Iowa Weather Radar & Traffic Cameras</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="side-panel">
-        <h2>Iowa Weather and Traffic</h2>
-        <p>Information and live updates from the Iowa weather radar and traffic cameras.</p>
+    <!-- Header -->
+    <header>
+        <h1>🌦️ Iowa Weather Radar & Traffic Cameras</h1>
+        <p>Real-time weather radar overlay and live traffic camera feeds</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Map Container -->
+        <div id="map" class="map"></div>
+
+        <!-- Side Panel for Camera Details -->
+        <div id="side-panel" class="side-panel">
+            <div id="side-panel-content">
+                <p class="status-message info">Click on a camera marker to view details</p>
+            </div>
+        </div>
     </div>
-    <div id="map"></div>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // Initialize the map
-        var map = L.map('map').setView([42.0347, -93.6200], 7); // Iowa coordinates
 
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Function to add radar and camera data on the map would go here
-        // ...
-    </script>
+    <!-- Leaflet Library -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Leaflet MarkerCluster Library -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    
+    <!-- Custom Application Script -->
+    <script src="app.js"></script>
 </body>
 </html>
