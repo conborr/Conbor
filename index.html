@@ -3,46 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Real-time weather radar and traffic cameras for Iowa">
-    <title>Iowa Weather Radar & Traffic Cameras</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <!-- Leaflet MarkerCluster CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css">
+    <title>Conbor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header, footer { background-color: #f8f9fa; padding: 10px; text-align: center; }
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px; }
+        #search-box { margin-bottom: 20px; }
+        #radar-toggle { margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <h1>🌦️ Iowa Weather Radar & Traffic Cameras</h1>
-        <p>Real-time weather radar overlay and live traffic camera feeds</p>
-    </header>
-
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Map Container -->
-        <div id="map" class="map"></div>
-
-        <!-- Side Panel for Camera Details -->
-        <div id="side-panel" class="side-panel">
-            <div id="side-panel-content">
-                <p class="status-message info">Click on a camera marker to view details</p>
-            </div>
+        <h1>Welcome to Conbor</h1>
+        <div id="search-box">
+            <input type="text" placeholder="Search..." />
+            <button>Search</button>
         </div>
+        <div id="radar-toggle">
+            <label>
+                <input type="checkbox" /> Toggle Radar
+            </label>
+        </div>
+    </header>
+    <div class="container">
+        <p>Your Conbor content goes here...</p>
+        <!-- Add other relevant sections here -->
     </div>
-
-    <!-- Leaflet Library -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
-    <!-- Leaflet MarkerCluster Library -->
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    
-    <!-- Custom Application Script -->
-    <script src="app.js"></script>
+    <footer>
+        <p>&copy; 2026 Conbor. All rights reserved.</p>
+    </footer>
 </body>
 </html>
