@@ -1,51 +1,147 @@
-.muted {
-  color: #888;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.active {
-  font-weight: bold;
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
-  margin: 0;
+  overflow: hidden;
 }
 
 header {
-  background: linear-gradient(to right, #4a90e2, #50e3c2);
+  background: linear-gradient(135deg, #4a90e2 0%, #50e3c2 100%);
   padding: 20px;
   text-align: center;
   color: white;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#citySearch {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  width: 250px;
+  font-size: 14px;
+}
+
+#searchBtn {
+  padding: 10px 20px;
+  background: white;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#searchBtn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+#radarToggle {
+  padding: 10px 20px;
+  background: white;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#radarToggle.active {
+  background: #2ecc71;
+  color: white;
+}
+
+#radarToggle:hover {
+  transform: scale(1.05);
 }
 
 .main-container {
   display: flex;
   flex: 1;
+  gap: 0;
+  overflow: hidden;
+  min-height: 0;
 }
 
-.map-container {
+#map {
   flex: 2;
+  height: 100%;
+  width: 100%;
   background: #f0f0f0;
-  padding: 20px;
+  z-index: 10;
+}
+
+.leaflet-container {
+  font-family: Arial, sans-serif;
 }
 
 .side-panel {
   flex: 1;
-  background: #ffffff;
-  padding: 20px;
+  background: white;
   border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 250px;
 }
 
-.camera-details {
-  margin: 10px 0;
+.side-panel.open {
+  display: flex;
 }
 
-.camera-image {
+#cameraDetails {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+#cameraDetails h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.cam-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.cam-img {
   width: 100%;
-  height: auto;
   border-radius: 5px;
+  margin: 10px 0;
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .video-link {
@@ -53,27 +149,139 @@ header {
   background: #4a90e2;
   color: white;
   padding: 10px 15px;
-  margin: 5px 0;
+  margin: 10px 0;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
-.weather-forecast {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  margin: 20px 0;
+.video-link:hover {
+  background: #357abd;
+  transform: scale(1.05);
+}
+
+.muted {
+  color: #888;
+  font-size: 12px;
+}
+
+.weather-panel {
+  background: white;
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  flex-shrink: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.weather-panel h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.forecast-item {
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  border-left: 3px solid #4a90e2;
+}
+
+.forecast-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.forecast-desc {
+  font-size: 13px;
+  color: #555;
+  margin: 4px 0;
+}
+
+footer {
+  background: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #666;
+  border-top: 1px solid #ddd;
+  flex-shrink: 0;
 }
 
 .marker-cluster {
-  background-color: rgba(74, 144, 226, 0.8);
+  background-color: rgba(74, 144, 226, 0.8) !important;
   border-radius: 50%;
   color: white;
-  padding: 5px;
+  font-weight: bold;
+  text-align: center;
 }
 
+.marker-cluster div {
+  background-color: rgba(74, 144, 226, 0.6) !important;
+  border-radius: 50%;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
+  }
+
+  #map {
+    flex: 1;
+    min-height: 300px;
+  }
+
+  .side-panel {
+    flex: 0;
+    height: 250px;
+    min-width: 100%;
+    display: none;
+  }
+
+  .side-panel.open {
+    display: flex;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  #citySearch {
+    width: 150px;
+    font-size: 12px;
+  }
+
+  #searchBtn, #radarToggle {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .weather-panel {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .header-controls {
+    gap: 5px;
+  }
+
+  #citySearch {
+    width: 100%;
+  }
+
+  #searchBtn, #radarToggle {
+    font-size: 11px;
+    padding: 6px 12px;
   }
 }
